@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine Surprise 💕</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: #ffd6e8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Pacifico', cursive;
+        overflow: hidden;
+    }
+
+    .card {
+        background: #ff4d6d;
+        padding: 45px 55px;
+        border-radius: 30px;
+        text-align: center;
+        color: white;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+        position: relative;
+    }
+
+    h1 {
+        font-size: 38px;
+        margin-bottom: 35px;
+    }
+
+    .buttons {
+        position: relative;
+        height: 120px;
+    }
+
+    button {
+        font-family: 'Pacifico', cursive;
+        font-size: 18px;
+        padding: 14px 22px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    #yesBtn {
+        background: white;
+        color: #ff4d6d;
+        margin-right: 20px;
+    }
+
+    #yesBtn:hover {
+        transform: scale(1.1);
+    }
+
+    #noBtn {
+        background: #ffb3c6;
+        color: #800f2f;
+        position: absolute;
+        left: 140px;
+        top: 0;
+    }
+
+    /* Love Page */
+    .love-page {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .love-page img {
+        width: 320px;
+        border-radius: 25px;
+        box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+        margin-bottom: 25px;
+    }
+
+    .love-page h2 {
+        font-size: 36px;
+        color: #ff4d6d;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- Music -->
+<audio id="song" src="perfect.mp3"></audio>
+
+<!-- First Page -->
+<div class="card" id="mainCard">
+    <h1>Can you be my Valentine? 💕</h1>
+
+    <div class="buttons">
+        <button id="yesBtn">Yes, offcourse my kheeer ka Gudda 💖</button>
+        <button id="noBtn">No</button>
+    </div>
+</div>
+
+<!-- Love Page -->
+<div class="love-page" id="lovePage">
+    <img src="love.jpg" alt="My Love">
+    <h2>I Loveeee Youuuuu My Powerhouse ♥♥</h2>
+</div>
+
+<script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const mainCard = document.getElementById("mainCard");
+    const lovePage = document.getElementById("lovePage");
+    const song = document.getElementById("song");
+
+    const noTexts = [
+        "Abhi nahi 🙈",
+        "Sochungi 🤔",
+        "Thoda aur impress karo 😌",
+        "Shayad kal 😉",
+        "Nope 😜",
+        "Try harder 😏",
+        "Hehe nahi 😆"
+    ];
+
+    function moveNoButton() {
+        const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+        const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+
+        const randomText = noTexts[Math.floor(Math.random() * noTexts.length)];
+        noBtn.innerText = randomText;
+    }
+
+    noBtn.addEventListener("mouseover", moveNoButton);
+    noBtn.addEventListener("click", moveNoButton);
+
+    yesBtn.addEventListener("click", () => {
+        mainCard.style.display = "none";
+        lovePage.style.display = "flex";
+        song.play();
+    });
+</script>
+
+</body>
+</html>
